@@ -26,7 +26,7 @@ import { cn } from '@/lib/cn';
 import { usePolling } from '@/lib/usePolling';
 import { Check, CheckCheck, ChevronLeft } from 'lucide-react';
 
-const POLL_MS = 10_000;
+const POLL_MS = 4_000;
 const CONVERSATIONS_POLL_MS = 30_000;
 // How close to the bottom still counts as "reading the latest messages".
 const BOTTOM_SLACK_PX = 40;

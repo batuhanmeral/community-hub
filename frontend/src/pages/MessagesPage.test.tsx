@@ -203,7 +203,7 @@ describe('MessagesPage polling', () => {
     await screen.findByText('m2');
 
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(10_000);
+      await vi.advanceTimersByTimeAsync(4_000);
     });
     expect(await screen.findByText('m3')).toBeInTheDocument();
     expect(screen.getAllByText('m2')).toHaveLength(1);
@@ -224,7 +224,7 @@ describe('MessagesPage polling', () => {
     await screen.findByText('m5');
 
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(10_000);
+      await vi.advanceTimersByTimeAsync(4_000);
     });
     const m3 = await screen.findByText('m3');
     expect(isBefore(m3, screen.getByText('m5'))).toBe(true);
@@ -239,7 +239,7 @@ describe('MessagesPage polling', () => {
     await screen.findByText('m1');
 
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(10_000);
+      await vi.advanceTimersByTimeAsync(4_000);
     });
     expect(await screen.findByText('m4')).toBeInTheDocument();
     expect(screen.queryByText('m1')).not.toBeInTheDocument();
@@ -256,7 +256,7 @@ describe('MessagesPage polling', () => {
 
     for (let tick = 0; tick < 3; tick += 1) {
       await act(async () => {
-        await vi.advanceTimersByTimeAsync(10_000);
+        await vi.advanceTimersByTimeAsync(4_000);
       });
     }
     // One initial load plus the single poll that failed.
@@ -275,7 +275,7 @@ describe('MessagesPage polling', () => {
 
     for (let tick = 0; tick < 3; tick += 1) {
       await act(async () => {
-        await vi.advanceTimersByTimeAsync(10_000);
+        await vi.advanceTimersByTimeAsync(4_000);
       });
     }
     expect(api.listMessages).toHaveBeenCalledTimes(4);
@@ -299,7 +299,7 @@ describe('MessagesPage polling', () => {
 
     fireEvent.click(await screen.findByRole('button', { name: 'Load older messages' }));
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(10_000);
+      await vi.advanceTimersByTimeAsync(4_000);
     });
     await screen.findByText('m6');
 
@@ -336,7 +336,7 @@ describe('MessagesPage polling', () => {
     await user.type(await screen.findByPlaceholderText(/message u\/bob/i), 'm2');
     await user.click(screen.getByRole('button', { name: 'Send' }));
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(10_000);
+      await vi.advanceTimersByTimeAsync(4_000);
     });
 
     // Both responses settle before React flushes the send's state update.
@@ -383,7 +383,7 @@ describe('MessagesPage scroll position', () => {
     await openScrolledUp();
 
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(10_000);
+      await vi.advanceTimersByTimeAsync(4_000);
     });
     expect(api.listMessages).toHaveBeenCalledTimes(2);
     expect(Element.prototype.scrollTo).not.toHaveBeenCalled();
@@ -397,7 +397,7 @@ describe('MessagesPage scroll position', () => {
     await openScrolledUp();
 
     await act(async () => {
-      await vi.advanceTimersByTimeAsync(10_000);
+      await vi.advanceTimersByTimeAsync(4_000);
     });
     expect(await screen.findByText('m2')).toBeInTheDocument();
     expect(Element.prototype.scrollTo).not.toHaveBeenCalled();
