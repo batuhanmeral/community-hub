@@ -117,7 +117,7 @@ community-forum/
 
 ## Installation
 
-Requirements: Python 3.12+, Node 22+, Docker (or a local PostgreSQL 16).
+Requirements: Python 3.12+, Node 26+, Docker (or a local PostgreSQL 16).
 
 ```bash
 # Database
